@@ -1,4 +1,35 @@
+import { FormEventHandler } from "react";
+
 function JiroCall() {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const shopName = formData.get("shopName");
+    const noodleAmount = formData.get("noodleAmount");
+    const vegetableAmount = formData.get("vegetableAmount");
+    const garlicAmount = formData.get("garlicAmount");
+    const lardAmount = formData.get("lardAmount");
+    const caramelAmount = formData.get("caramelAmount");
+
+    fetch("http://127.0.0.1:8000/jiroCall", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        shopName,
+        noodleAmount,
+        vegetableAmount,
+        garlicAmount,
+        lardAmount,
+        caramelAmount,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <div className="flex h-screen w-screen flex-col bg-base-200 p-5">
       <div className="chat chat-start">
@@ -17,7 +48,7 @@ function JiroCall() {
       </div>
       <div className="flex flex-col items-center justify-center">
         <h2>ラーメンの詳細を追加</h2>
-        <form className="flex w-2/3 flex-col gap-2">
+        <form onSubmit={handleSubmit} className="flex w-2/3 flex-col gap-2">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
               <label>
