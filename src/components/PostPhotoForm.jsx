@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function PostPhotoForm({ setImage, setPage }) {
   const handleImageChange = (e) => {
@@ -18,7 +18,7 @@ function PostPhotoForm({ setImage, setPage }) {
     <div id="post-photo-form" className="page">
       <h2>ラーメンの写真を追加</h2>
       <input type="file" onChange={handleImageChange} accept="image/*" />
-      <button onClick={() => setPage('post-detail-form')}>決定</button>
+      <button onClick={() => setPage("post-detail-form")}>決定</button>
     </div>
   );
 }

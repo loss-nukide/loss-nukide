@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function PostItem({ post }) {
   return (
@@ -10,7 +10,9 @@ function PostItem({ post }) {
       <h4>{post.karameType}</h4>
       <h4>{post.aburaType}</h4>
       <p>{post.postContent}</p>
-      {post.image && <img src={post.image} alt="投稿画像" className="post-image" />}
+      {post.image && (
+        <img src={post.image} alt="投稿画像" className="post-image" />
+      )}
     </div>
   );
 }
